@@ -17,7 +17,7 @@ Selanjutnya kalian ubah terlebih dahulu koneksi RDS nya di line 29 dan 41, lalu 
 Ubah chmod file ubuntu.sh dengan cara<br>
 <code>chmod +x ubuntu.sh</code><br>
 Lalu Running Script nya 😈😈😈😈<br>
-<code>sudo ./ubuntu.sh</code>
+<code>sudo ./ubuntu.sh</code><br>
 Proses Installasi selesai , webserver siap di gunakan
 
 ===========================================================================
