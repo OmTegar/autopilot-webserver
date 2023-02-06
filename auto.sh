@@ -14,15 +14,18 @@ cd /var/www/ && git clone https://github.com/OmTegar/web-dinamis-produktif.git
 chmod 777 -R /var/www/web-dinamis-produktif/
 
 # Replace the default Apache2 configuration with the custom configuration
-cd /etc/apache2/
-rm /sites-available/000-default.conf && cp ../../var/www/web-dinamis-produktif/asset/shell/000-default.conf /etc/apache2/sites-available/
-rm /sites-enabled/000-default.conf && cp ../../var/www/web-dinamis-produktif/asset/shell/000-default.conf /etc/apache2/sites-enabled/
+cd /etc/apache2/sites-available/
+rm -r /etc/apache2/sites-available/000-default.conf
+cp /var/www/web-dinamis-produktif/asset/shell/000-default.conf .
+rm ../sites-enabled/000-default.conf
+cp 000-default.conf ../sites-enabled/
+cd ../../../
 
 # Restart Apache2 service
 systemctl restart apache2
 
 # Modify the file koneksi.php to use the RDS database
-sed -i 's/localhost/database-1.cgu4ysargwic.us-east-1.rds.amazonaws.com/g' /var/www/web-dinamis-produktif/asset/koneksi.php
+sed -i 's/localhost/database-1.ctfymhrqvpdq.us-east-1.rds.amazonaws.com/g' /var/www/web-dinamis-produktif/asset/koneksi.php
 sed -i 's/root/admin/g' /var/www/web-dinamis-produktif/asset/koneksi.php
 sed -i 's/\"\"/\"admin123\"/g' /var/www/web-dinamis-produktif/asset/koneksi.php
 
@@ -34,7 +37,7 @@ else
 fi
 
 # Login to the RDS database
-mysql -h database-1.cgu4ysargwic.us-east-1.rds.amazonaws.com -u admin -p << EOF
+mysql -h database-1.ctfymhrqvpdq.us-east-1.rds.amazonaws.com -u admin -p << EOF
 
 # Show existing databases
 show databases;
@@ -56,3 +59,6 @@ SELECT * FROM users;
 
 # Exit the MySQL prompt
 EOF
+
+# Reboot Webserver OS System
+sudo reboot
