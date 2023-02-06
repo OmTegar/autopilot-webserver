@@ -2,7 +2,7 @@
 
 # Update the package list and install Apache2, PHP, PHP MySQLi, Git, and MariaDB
 apt-get update -y
-apt-get install apache2 php php-mysqli git mariadb-server -y
+apt-get install apache2 php php-mysqli php-mysql git mariadb-server -y
 
 # Start Apache2 service
 service apache2 start
