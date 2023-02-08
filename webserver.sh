@@ -25,7 +25,7 @@ cd ../../../
 systemctl restart apache2
 
 # Modify the file koneksi.php to use the RDS database
-sed -i 's/localhost/database-1.ctfymhrqvpdq.us-east-1.rds.amazonaws.com/g' /var/www/web-dinamis-produktif/asset/koneksi.php
+sed -i 's/localhost/database-1.csfoslsqwvcb.us-east-1.rds.amazonaws.com/g' /var/www/web-dinamis-produktif/asset/koneksi.php
 sed -i 's/root/admin/g' /var/www/web-dinamis-produktif/asset/koneksi.php
 sed -i 's/\"\"/\"admin123\"/g' /var/www/web-dinamis-produktif/asset/koneksi.php
 
@@ -37,7 +37,7 @@ else
 fi
 
 # Login to the RDS database
-mysql -h database-1.ctfymhrqvpdq.us-east-1.rds.amazonaws.com -u admin -p << EOF
+mysql -h database-1.csfoslsqwvcb.us-east-1.rds.amazonaws.com -u admin -p << EOF
 
 # Show existing databases
 show databases;
@@ -59,6 +59,3 @@ SELECT * FROM users;
 
 # Exit the MySQL prompt
 EOF
-
-# Reboot Webserver OS System
-sudo reboot
