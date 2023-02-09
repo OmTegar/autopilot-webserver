@@ -246,4 +246,3 @@ systemctl restart proftpd
 cd /home
 mkdir ftp
 chmod 777 /home/ftp
-adduser bastion
